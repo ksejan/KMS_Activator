@@ -52,10 +52,10 @@ def activate_windows():
     ejecutar_comandos()
 '''---------------------------------------------------------------------------------------------------------------------------------'''
 def activate_office():
-    print("Activando Office 2019+............")
-    commands = f'cd "C:\Program Files\Microsoft Office\Office16" & cscript //nologo slmgr.vbs /skms {ip} & cscript //nologo slmgr.vbs /ato'
+    print("Activando Office ............")
+    commands = f'cd "C:\Program Files\Microsoft Office\Office16" & cscript ospp.vbs /sethst:{ip} & cscript ospp.vbs /act'
     shell.ShellExecuteEx(lpVerb='runas', lpFile='cmd.exe', lpParameters='/c '+commands)
-    print("Windows Activado!")
+    print("Office Activado!")
 
 
 
@@ -72,10 +72,14 @@ def elegir_producto():
             if user_input == "1":
                  print("Has elegido activar Windows")
                  activate_windows()
+                 break
             if user_input == "2":
                  print("Has elegido activar Office")
                  activate_office()
-            break
+                 break
+            else:
+                print("Opción no valida! Por favor elige una opción entre el 1 o el 2")
+                continue
             
 
     
